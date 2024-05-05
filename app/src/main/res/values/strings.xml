@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Grow Nepe</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_detection">Detection</string>
+    <string name="menu_article">Article</string>
+    <string name="menu_lms">LMS</string>
+</resources>
