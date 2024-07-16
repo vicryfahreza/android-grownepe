@@ -13,12 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.vicry.grownepe.ui.screen.detection.cameraDestroy
-import com.vicry.grownepe.ui.screen.detection.cameraExecutor
-import com.vicry.grownepe.ui.screen.detection.outputDirectory
 import com.vicry.grownepe.ui.screen.detection.shouldShowCameraTrue
 import com.vicry.grownepe.ui.theme.GrowNepeTheme
 import java.io.File
-import java.util.concurrent.Executors
 
 class MainActivity : ComponentActivity() {
 
@@ -35,10 +32,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        requestCameraPermission()
-        outputDirectory = getOutputDirectory()
-        cameraExecutor = Executors.newSingleThreadExecutor()
+//        requestCameraPermission()
+//        outputDirectory = getOutputDirectory()
+//        cameraExecutor = Executors.newSingleThreadExecutor()
     }
+
 
     private fun requestCameraPermission() {
         when {
@@ -77,10 +75,10 @@ class MainActivity : ComponentActivity() {
         return if (mediaDir != null && mediaDir.exists()) mediaDir else filesDir
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        cameraDestroy()
-    }
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        cameraDestroy()
+//    }
 
 
 
