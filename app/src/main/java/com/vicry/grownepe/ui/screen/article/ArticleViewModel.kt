@@ -27,9 +27,9 @@ class ArticleViewModel (
         _uistatus.value = UIStatus.Success(repository.searchNepenthes(_query.value))
     }
 
-    fun getAllSucculents() {
+    fun getAllNepenthes() {
         viewModelScope.launch {
-            repository.getAllSucculents()
+            repository.getAllNepenthes()
                 .catch {
                     _uistatus.value = UIStatus.Error(it.message.toString())
                 }

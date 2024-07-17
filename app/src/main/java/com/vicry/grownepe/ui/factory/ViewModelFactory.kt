@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.vicry.grownepe.model.repo.NepenthesRepository
 import com.vicry.grownepe.ui.screen.article.ArticleViewModel
+import com.vicry.grownepe.ui.screen.article.detail.DetailViewModel
 
 class ViewModelFactory(private val repo: NepenthesRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -11,6 +12,8 @@ class ViewModelFactory(private val repo: NepenthesRepository) : ViewModelProvide
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ArticleViewModel::class.java)) {
             return ArticleViewModel(repo) as T
+        } else if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
+            return DetailViewModel(repo) as T
         }
         throw IllegalArgumentException("Not Found ViewModel class: " + modelClass.name)
     }

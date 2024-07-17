@@ -1,65 +1,90 @@
 package com.vicry.grownepe.ui.screen.article
 
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.vicry.grownepe.R
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.vicry.grownepe.model.nepenthes.StateNepenthes
+import com.vicry.grownepe.model.repo.NepenthesInjection
+import com.vicry.grownepe.ui.factory.ViewModelFactory
+import com.vicry.grownepe.ui.navigation.ArticleNepenthesRow
+import com.vicry.grownepe.ui.navigation.SearchNepenthes
+import com.vicry.grownepe.ui.state.UIStatus
+import androidx.compose.foundation.lazy.items
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ArticleScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: ArticleViewModel = viewModel(
+        factory =  ViewModelFactory(NepenthesInjection.provideRepository())
+    ),
+    navigateToDetail: (Long) -> Unit,
 ) {
-    AvatarCard()
-}
-
-
-@Composable
-fun AvatarCard() {
-    Row(
-        modifier = Modifier.padding(8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Box {
-            Image(
-                painter = painterResource(R.drawable.avatar1),
-                contentDescription = "Avatar",
-                modifier = Modifier
-                    .size(60.dp)
-                    .clip(CircleShape)
-            )
-            Icon(
-                imageVector = Icons.Default.CheckCircle,
-                contentDescription = "Online Status",
-                tint = Color.Green,
-                modifier = Modifier.align(Alignment.BottomEnd)
-            )
-        }
-        Spacer(modifier = Modifier.width(8.dp))
-        Column {
-            Text(
-                text = "Robertson",
-                fontWeight = FontWeight.Bold)
-            Text(text = "Peserta Magang")
+    viewModel.uistatus.collectAsState(initial = UIStatus.Loading).value.let { uistatus ->
+        when (uistatus) {
+            is UIStatus.Loading -> {
+                viewModel.getAllNepenthes()
+            }
+            is UIStatus.Success -> {
+                ArticleContent(
+                    state = uistatus.data,
+                    modifier = modifier,
+                    navigateToDetail = navigateToDetail,
+                    viewModel = viewModel,
+                )
+            }
+            is UIStatus.Error -> {}
         }
     }
 }
+
+@ExperimentalMaterial3Api
+@Composable
+fun ArticleContent(
+    state: List<StateNepenthes>,
+    navigateToDetail: (Long) -> Unit,
+    modifier: Modifier = Modifier,
+    viewModel: ArticleViewModel
+) {
+    Box {
+        Column {
+            val query by viewModel.query
+
+            SearchNepenthes(
+                query = query,
+                onQueryChange = viewModel::search,
+                modifier = Modifier.background(MaterialTheme.colorScheme.primary)
+            )
+
+            LazyColumn(
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                modifier = modifier
+            ) {
+
+                items(state) { data ->
+                    ArticleNepenthesRow(
+                        image = data.nepenthes.image,
+                        name = data.nepenthes.name,
+                        modifier = Modifier.clickable {
+                            navigateToDetail(data.nepenthes.id)
+                        })
+                }
+
+            }
+        }
+    }
+}
+

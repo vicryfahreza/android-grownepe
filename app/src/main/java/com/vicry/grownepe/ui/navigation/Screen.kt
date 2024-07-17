@@ -5,4 +5,8 @@ sealed class Screen(val route: String) {
     object Article: Screen("article")
     object Detection: Screen("detection")
     object LMS: Screen("lms")
+
+    object DetailNepenthes : Screen("article/{nepenthesId}") {
+        fun createRoute(nepenthesId: Long) = "article/$nepenthesId"
+    }
 }

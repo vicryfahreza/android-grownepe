@@ -24,11 +24,11 @@ class NepenthesRepository {
         }
     }
 
-    fun getAllSucculents(): Flow<List<StateNepenthes>> {
+    fun getAllNepenthes(): Flow<List<StateNepenthes>> {
         return flowOf(stateNepenthes)
     }
 
-    fun getSucculentById(succulentId: Long): Flow<StateNepenthes> {
+    fun getNepenthesById(succulentId: Long): Flow<StateNepenthes> {
         return flowOf(
             stateNepenthes.first { it.nepenthes.id == succulentId }
         )

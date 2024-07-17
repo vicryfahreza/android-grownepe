@@ -13,7 +13,7 @@ tensorflowLiteSupport = "0.1.0"
 tensorflowLiteMetadata = "0.1.0"
 cameraX = "1.0.1"
 cameraView = "1.0.0-alpha27"
-coilCompose = "1.4.0"
+coilCompose = "2.4.0"
 composeVersion = "1.5.2"
 
 [libraries]

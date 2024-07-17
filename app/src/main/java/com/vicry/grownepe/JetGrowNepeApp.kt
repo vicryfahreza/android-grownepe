@@ -17,13 +17,16 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.vicry.grownepe.ui.navigation.NavigationItem
 import com.vicry.grownepe.ui.navigation.Screen
 import com.vicry.grownepe.ui.screen.article.ArticleScreen
+import com.vicry.grownepe.ui.screen.article.detail.DetailScreen
 import com.vicry.grownepe.ui.screen.detection.DetectionScreen
 import com.vicry.grownepe.ui.screen.home.HomeScreen
 import com.vicry.grownepe.ui.screen.lms.LmsScreen
@@ -52,7 +55,20 @@ fun JetGrowNepeApp(
                 DetectionScreen()
             }
             composable(Screen.Article.route){
-                ArticleScreen()
+                ArticleScreen(
+                    navigateToDetail = { nepenthesId ->
+                        navController.navigate(Screen.DetailNepenthes.createRoute(nepenthesId))
+                    }
+                )
+            }
+            composable(
+                route = Screen.DetailNepenthes.route,
+                arguments = listOf(navArgument("nepenthesId") { type = NavType.LongType } )
+            ) {
+                val id = it.arguments?.getLong("nepenthesId") ?: -1L
+                DetailScreen(
+                    nepenthesId = id,
+                )
             }
             composable(Screen.LMS.route){
                 LmsScreen()
