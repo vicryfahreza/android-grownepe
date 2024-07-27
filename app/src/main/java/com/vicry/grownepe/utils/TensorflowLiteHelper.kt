@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import com.vicry.grownepe.ml.NepenthesModel
+import com.vicry.grownepe.ml.NepenthesModelV4
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteBuffer
@@ -14,8 +15,8 @@ object TensorfLowLiteHelper {
     val imageSize = 224
 
     @Composable
-    fun classifyImage(image: Bitmap, callback : (@Composable (fruit : String) -> Unit)) {
-        val model: NepenthesModel = NepenthesModel.newInstance(LocalContext.current)
+    fun ClassifyImage(image: Bitmap, callback : (@Composable (nepenthes : String) -> Unit)) {
+        val model: NepenthesModelV4 = NepenthesModelV4.newInstance(LocalContext.current)
 
         // Creates inputs for reference.
         val inputFeature0 =
@@ -37,7 +38,7 @@ object TensorfLowLiteHelper {
         inputFeature0.loadBuffer(byteBuffer)
 
         // Runs model inference and gets result.
-        val outputs: NepenthesModel.Outputs = model.process(inputFeature0)
+        val outputs: NepenthesModelV4.Outputs = model.process(inputFeature0)
         val outputFeature0: TensorBuffer = outputs.getOutputFeature0AsTensorBuffer()
         val confidences = outputFeature0.floatArray
         // find the index of the class with the biggest confidence.
@@ -49,11 +50,17 @@ object TensorfLowLiteHelper {
                 maxPos = i
             }
         }
-        val classes = arrayOf("ampullaria", "gracilis", "mirabilis", "rafflesiana", "reinwardtiana", "truncata", "veitchii")
+        val classes = arrayOf("ampullaria", "gracilis", "mirabilis", "rafflesiana")
 
-        if (maxConfidence > 0.6) {
-            callback.invoke(classes[maxPos])
+        var s = ""
+        for (i in classes.indices) {
+            s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100)
         }
+
+        println("PREDIKSI == $s")
+
+
+        callback.invoke(classes[maxPos])
 
         // Releases model resources if no longer used.
         model.close()

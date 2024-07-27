@@ -4,4 +4,15 @@
     <string name="menu_detection">Detection</string>
     <string name="menu_article">Article</string>
     <string name="menu_lms">LMS</string>
+
+    <!--  Main Article  -->
+    <string name="article_species_label">Nepenthes Species</string>
+    <string name="article_natural_hybrid_label">Nepenthes Hybrid Alam</string>
+    <string name="article_cultivar_label">Nepenthes Kultivar</string>
+    <string name="article_species_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1721979866/Nepenthes/article-home/species-banner_eemyuo.jpg</string>
+    <string name="article_natural_hybrid_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1721979866/Nepenthes/article-home/natural-hybrid-banner_dtuxay.jpg</string>
+    <string name="article_cultivar_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1721979867/Nepenthes/article-home/cultivar-banner_hpull1.jpg</string>
+
+
+
 </resources>
