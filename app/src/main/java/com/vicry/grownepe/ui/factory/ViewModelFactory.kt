@@ -3,17 +3,29 @@ package com.vicry.grownepe.ui.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.vicry.grownepe.model.repo.NepenthesRepository
-import com.vicry.grownepe.ui.screen.article.ArticleViewModel
-import com.vicry.grownepe.ui.screen.article.detail.DetailViewModel
+import com.vicry.grownepe.ui.screen.article.cultivar.articlecultivar.CultivarViewModel
+import com.vicry.grownepe.ui.screen.article.cultivar.detailcultivar.DetailCultivarViewModel
+import com.vicry.grownepe.ui.screen.article.naturalhybrid.articlehybrid.NaturalHybridViewModel
+import com.vicry.grownepe.ui.screen.article.naturalhybrid.detailhybrid.DetailNHViewModel
+import com.vicry.grownepe.ui.screen.article.spesies.articlespecies.SpeciesViewModel
+import com.vicry.grownepe.ui.screen.article.spesies.detailspecies.DetailSpeciesViewModel
 
 class ViewModelFactory(private val repo: NepenthesRepository) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ArticleViewModel::class.java)) {
-            return ArticleViewModel(repo) as T
-        } else if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
-            return DetailViewModel(repo) as T
+        if (modelClass.isAssignableFrom(NaturalHybridViewModel::class.java)) {
+            return NaturalHybridViewModel(repo) as T
+        } else if (modelClass.isAssignableFrom(DetailNHViewModel::class.java)) {
+            return DetailNHViewModel(repo) as T
+        } else if (modelClass.isAssignableFrom(CultivarViewModel::class.java)) {
+            return CultivarViewModel(repo) as T
+        } else if (modelClass.isAssignableFrom(DetailCultivarViewModel::class.java)) {
+            return DetailCultivarViewModel(repo) as T
+        } else if (modelClass.isAssignableFrom(DetailSpeciesViewModel::class.java)) {
+            return DetailSpeciesViewModel(repo) as T
+        } else if (modelClass.isAssignableFrom(SpeciesViewModel::class.java)) {
+            return SpeciesViewModel(repo) as T
         }
         throw IllegalArgumentException("Not Found ViewModel class: " + modelClass.name)
     }

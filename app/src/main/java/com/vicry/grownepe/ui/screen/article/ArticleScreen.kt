@@ -1,90 +1,181 @@
 package com.vicry.grownepe.ui.screen.article
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.vicry.grownepe.model.nepenthes.StateNepenthes
-import com.vicry.grownepe.model.repo.NepenthesInjection
-import com.vicry.grownepe.ui.factory.ViewModelFactory
-import com.vicry.grownepe.ui.navigation.ArticleNepenthesRow
-import com.vicry.grownepe.ui.navigation.SearchNepenthes
-import com.vicry.grownepe.ui.state.UIStatus
-import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import com.vicry.grownepe.ui.theme.GrowNepeTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun ArticleScreen(
     modifier: Modifier = Modifier,
-    viewModel: ArticleViewModel = viewModel(
-        factory =  ViewModelFactory(NepenthesInjection.provideRepository())
-    ),
-    navigateToDetail: (Long) -> Unit,
-) {
-    viewModel.uistatus.collectAsState(initial = UIStatus.Loading).value.let { uistatus ->
-        when (uistatus) {
-            is UIStatus.Loading -> {
-                viewModel.getAllNepenthes()
-            }
-            is UIStatus.Success -> {
-                ArticleContent(
-                    state = uistatus.data,
-                    modifier = modifier,
-                    navigateToDetail = navigateToDetail,
-                    viewModel = viewModel,
-                )
-            }
-            is UIStatus.Error -> {}
-        }
-    }
-}
+    speciesImage: String,
+    naturalHybridImage: String,
+    cultivarImage: String,
+    speciesLabel: String,
+    naturalLabel: String,
+    cultivarLabel: String,
+    navigateToSpesies: (String) -> Unit,
+    navigateToCultivar: (String) -> Unit,
+    navigateToNaturalHybrid: (String) -> Unit,
+    ) {
+    Box{
+        Column(
+            modifier = Modifier.verticalScroll(
+                rememberScrollState()
+            )
+        ) {
 
-@ExperimentalMaterial3Api
-@Composable
-fun ArticleContent(
-    state: List<StateNepenthes>,
-    navigateToDetail: (Long) -> Unit,
-    modifier: Modifier = Modifier,
-    viewModel: ArticleViewModel
-) {
-    Box {
-        Column {
-            val query by viewModel.query
-
-            SearchNepenthes(
-                query = query,
-                onQueryChange = viewModel::search,
-                modifier = Modifier.background(MaterialTheme.colorScheme.primary)
+            AsyncImage(
+                model = speciesImage,
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                modifier = modifier
+                    .padding(10.dp)
+                    .width(400.dp)
+                    .height(150.dp)
             )
 
-            LazyColumn(
-                contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                modifier = modifier
+            Row(
+                verticalAlignment = Alignment.CenterVertically
             ) {
-
-                items(state) { data ->
-                    ArticleNepenthesRow(
-                        image = data.nepenthes.image,
-                        name = data.nepenthes.name,
-                        modifier = Modifier.clickable {
-                            navigateToDetail(data.nepenthes.id)
-                        })
-                }
-
+                Text(
+                    text = speciesLabel,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp,
+                    color = Color.Black,
+                    modifier = modifier
+                        .padding(10.dp)
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .padding(start = 8.dp)
+                )
             }
+
+            Button(
+                onClick = { navigateToSpesies("species") },
+                modifier = Modifier
+                    .padding(15.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .width(400.dp)
+                ){
+                Text(
+                    text = "Cari Species Nepenthes",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,
+                    )
+            }
+
+            AsyncImage(
+                model = cultivarImage,
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                modifier = modifier
+                    .padding(10.dp)
+                    .width(400.dp)
+                    .height(150.dp)
+            )
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = cultivarLabel,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp,
+                    color = Color.Black,
+                    modifier = modifier
+                        .padding(10.dp)
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .padding(start = 8.dp)
+                )
+            }
+
+            Button(onClick = { navigateToCultivar("cultivar") },
+                modifier = Modifier
+                    .padding(15.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .width(400.dp)
+                ){
+                Text(
+                    text = "Cari Kultivar Nepenthes",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,)
+            }
+
+            AsyncImage(
+                model = naturalHybridImage,
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                modifier = modifier
+                    .padding(10.dp)
+                    .width(400.dp)
+                    .height(150.dp)
+            )
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = naturalLabel,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp,
+                    color = Color.Black,
+                    modifier = modifier
+                        .padding(10.dp)
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .padding(start = 8.dp)
+                )
+            }
+
+            Button(onClick = { navigateToNaturalHybrid("hybrid") },
+                modifier = Modifier
+                    .padding(15.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .width(400.dp)
+                ){
+                Text(text = "Cari Hybrid Alam Nepenthes")
+            }
+
         }
+
     }
 }
 
+@Composable
+@Preview(showBackground = true)
+fun DetailPreview() {
+    GrowNepeTheme {
+        ArticleScreen(
+            speciesImage = "",
+            naturalHybridImage = "",
+            cultivarImage = "",
+            speciesLabel = "Species",
+            naturalLabel = "Hybrid Alam",
+            cultivarLabel = "Cultivar",
+            navigateToSpesies = {},
+            navigateToCultivar= {},
+            navigateToNaturalHybrid = {},
+        )
+    }
+}

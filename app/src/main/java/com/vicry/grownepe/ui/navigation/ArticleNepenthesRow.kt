@@ -1,5 +1,6 @@
 package com.vicry.grownepe.ui.navigation
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,18 +36,8 @@ fun ArticleNepenthesRow(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
     ) {
-        Card(
-            modifier = Modifier
-                .padding(horizontal = 8.dp, vertical = 8.dp),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = 2.dp
-            ),
-            colors = CardDefaults.cardColors(
-                containerColor = Color.White,
-                contentColor = Color.Black
-            ),
-            shape = RoundedCornerShape(corner = CornerSize(16.dp))
-        ) {
+
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             AsyncImage(model = image,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
@@ -56,17 +47,18 @@ fun ArticleNepenthesRow(
                     .clip(CircleShape)
             )
         }
-            Text(
-                text = name,
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Medium,
-                fontSize = 18.sp,
-                color = Color.Black,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .padding(start = 8.dp)
-            )
+
+        Text(
+            text = name,
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Medium,
+            fontSize = 18.sp,
+            color = Color.Black,
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+                .padding(start = 8.dp, top = 8.dp, bottom = 8.dp)
+        )
     }
 }
 

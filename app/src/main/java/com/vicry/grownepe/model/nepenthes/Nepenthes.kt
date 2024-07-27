@@ -7,4 +7,12 @@ data class Nepenthes (
     val description: String,
     val humidity: String,
     val bestSoil: String,
-)
+    val bestEnvironment: String,
+    val imageDisplay1: String,
+    val imageDisplay2: String,
+    val imageDisplay3: String,
+    val description1: String,
+    val description2: String,
+    val description3: String,
+    val origin: String,
+    )

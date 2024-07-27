@@ -26,7 +26,12 @@ import androidx.navigation.navArgument
 import com.vicry.grownepe.ui.navigation.NavigationItem
 import com.vicry.grownepe.ui.navigation.Screen
 import com.vicry.grownepe.ui.screen.article.ArticleScreen
-import com.vicry.grownepe.ui.screen.article.detail.DetailScreen
+import com.vicry.grownepe.ui.screen.article.cultivar.articlecultivar.CultivarScreen
+import com.vicry.grownepe.ui.screen.article.cultivar.detailcultivar.DetailCultivarScreen
+import com.vicry.grownepe.ui.screen.article.naturalhybrid.articlehybrid.NaturalHybridScreen
+import com.vicry.grownepe.ui.screen.article.naturalhybrid.detailhybrid.DetailNHScreen
+import com.vicry.grownepe.ui.screen.article.spesies.articlespecies.SpeciesScreen
+import com.vicry.grownepe.ui.screen.article.spesies.detailspecies.DetailSpeciesScreen
 import com.vicry.grownepe.ui.screen.detection.DetectionScreen
 import com.vicry.grownepe.ui.screen.home.HomeScreen
 import com.vicry.grownepe.ui.screen.lms.LmsScreen
@@ -56,18 +61,63 @@ fun JetGrowNepeApp(
             }
             composable(Screen.Article.route){
                 ArticleScreen(
-                    navigateToDetail = { nepenthesId ->
-                        navController.navigate(Screen.DetailNepenthes.createRoute(nepenthesId))
-                    }
+                    speciesImage = stringResource(R.string.article_species_banner),
+                    naturalHybridImage = stringResource(R.string.article_natural_hybrid_banner),
+                    cultivarImage =  stringResource(R.string.article_cultivar_banner),
+                    speciesLabel = stringResource(R.string.article_species_label),
+                    naturalLabel = stringResource(R.string.article_natural_hybrid_label),
+                    cultivarLabel = stringResource(R.string.article_cultivar_label),
+                    navigateToSpesies = { navController.navigate(Screen.ArticleSpesies.route) },
+                    navigateToCultivar = { navController.navigate(Screen.ArticleCultivar.route) },
+                    navigateToNaturalHybrid = { navController.navigate(Screen.ArticleNaturalHybrid.route) },
                 )
             }
             composable(
-                route = Screen.DetailNepenthes.route,
+                route = Screen.DetailSpecies.route,
                 arguments = listOf(navArgument("nepenthesId") { type = NavType.LongType } )
             ) {
                 val id = it.arguments?.getLong("nepenthesId") ?: -1L
-                DetailScreen(
+                DetailSpeciesScreen(
                     nepenthesId = id,
+                )
+            }
+            composable(
+                route = Screen.DetailCultivar.route,
+                arguments = listOf(navArgument("nepenthesId") { type = NavType.LongType } )
+            ) {
+                val id = it.arguments?.getLong("nepenthesId") ?: -1L
+                DetailCultivarScreen(
+                    nepenthesId = id,
+                )
+            }
+            composable(
+                route = Screen.DetailNH.route,
+                arguments = listOf(navArgument("nepenthesId") { type = NavType.LongType } )
+            ) {
+                val id = it.arguments?.getLong("nepenthesId") ?: -1L
+                DetailNHScreen(
+                    nepenthesId = id,
+                )
+            }
+            composable(Screen.ArticleSpesies.route) {
+                SpeciesScreen(
+                    navigateToDetail = { nepenthesId ->
+                        navController.navigate(Screen.DetailSpecies.createRoute(nepenthesId))
+                    }
+                )
+            }
+            composable(Screen.ArticleCultivar.route) {
+                CultivarScreen(
+                    navigateToDetail = { nepenthesId ->
+                        navController.navigate(Screen.DetailCultivar.createRoute(nepenthesId))
+                    }
+                )
+            }
+            composable(Screen.ArticleNaturalHybrid.route) {
+                NaturalHybridScreen(
+                    navigateToDetail = { nepenthesId ->
+                        navController.navigate(Screen.DetailNH.createRoute(nepenthesId))
+                    }
                 )
             }
             composable(Screen.LMS.route){
@@ -135,7 +185,7 @@ fun BottomBar(
 
 @Preview(showBackground = true)
 @Composable
-fun jetGrowNepeAppPreview(){
+fun JetGrowNepeAppPreview(){
     GrowNepeTheme {
         JetGrowNepeApp()
     }
