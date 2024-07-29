@@ -35,6 +35,7 @@ import com.vicry.grownepe.ui.screen.article.spesies.detailspecies.DetailSpeciesS
 import com.vicry.grownepe.ui.screen.detection.DetectionScreen
 import com.vicry.grownepe.ui.screen.home.HomeScreen
 import com.vicry.grownepe.ui.screen.lms.LmsScreen
+import com.vicry.grownepe.ui.screen.lms.detailLms.DetailLmsScreen
 import com.vicry.grownepe.ui.theme.GrowNepeTheme
 
 @Composable
@@ -99,6 +100,15 @@ fun JetGrowNepeApp(
                     nepenthesId = id,
                 )
             }
+            composable(
+                route = Screen.DetailLMS.route,
+                arguments = listOf(navArgument("moduleId") { type = NavType.LongType } )
+            ) {
+                val id = it.arguments?.getLong("moduleId") ?: -1L
+                DetailLmsScreen(
+                    lmsId = id,
+                )
+            }
             composable(Screen.ArticleSpesies.route) {
                 SpeciesScreen(
                     navigateToDetail = { nepenthesId ->
@@ -121,7 +131,11 @@ fun JetGrowNepeApp(
                 )
             }
             composable(Screen.LMS.route){
-                LmsScreen()
+                LmsScreen(
+                    navigateToModule = { modulId ->
+                        navController.navigate(Screen.DetailLMS.createRoute(modulId))
+                    }
+                )
             }
         }
     }

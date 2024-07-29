@@ -1,5 +1,11 @@
 package com.vicry.grownepe.model.repo
 
+import com.vicry.grownepe.model.home.StateLowLandNepe
+import com.vicry.grownepe.model.home.StateSoil
+import com.vicry.grownepe.model.home.data.LowLandNepeData
+import com.vicry.grownepe.model.home.data.SoilData
+import com.vicry.grownepe.model.lms.StateLMS
+import com.vicry.grownepe.model.lms.modul.LmsData
 import com.vicry.grownepe.model.nepenthes.StateCultivar
 import com.vicry.grownepe.model.nepenthes.StateNaturalHybrid
 import com.vicry.grownepe.model.nepenthes.spesies.SpeciesData
@@ -15,6 +21,9 @@ class NepenthesRepository {
     private val stateNepenthes = mutableListOf<StateNepenthes>()
     private val stateNaturalHybrid = mutableListOf<StateNaturalHybrid>()
     private val stateCultivar = mutableListOf<StateCultivar>()
+    private val stateLMS = mutableListOf<StateLMS>()
+    private val stateLowLand = mutableListOf<StateLowLandNepe>()
+    private val stateSoil = mutableListOf<StateSoil>()
 
 
     init {
@@ -31,6 +40,21 @@ class NepenthesRepository {
         if (stateCultivar.isEmpty()) {
             CultivarData.nepenthes.forEach {
                 stateCultivar.add(StateCultivar(it, false))
+            }
+        }
+        if (stateLMS.isEmpty()) {
+            LmsData.lms.forEach {
+                stateLMS.add(StateLMS(it, false))
+            }
+        }
+        if (stateLowLand.isEmpty()) {
+            LowLandNepeData.lowLand.forEach {
+                stateLowLand.add(StateLowLandNepe(it, false))
+            }
+        }
+        if (stateSoil.isEmpty()) {
+            SoilData.soil.forEach {
+                stateSoil.add(StateSoil(it, false))
             }
         }
     }
@@ -65,6 +89,18 @@ class NepenthesRepository {
         return flowOf(stateCultivar)
     }
 
+    fun getAllLms(): Flow<List<StateLMS>> {
+        return flowOf(stateLMS)
+    }
+
+    fun getAllLowLand(): Flow<List<StateLowLandNepe>> {
+        return flowOf(stateLowLand)
+    }
+
+    fun getAllSoil(): Flow<List<StateSoil>> {
+        return flowOf(stateSoil)
+    }
+
 
     fun getNepenthesById(nepenthesId: Long): Flow<StateNepenthes> {
         return flowOf(
@@ -81,6 +117,12 @@ class NepenthesRepository {
     fun getCultivarById(nepenthesId: Long): Flow<StateCultivar> {
         return flowOf(
             stateCultivar.first { it.nepenthes.id == nepenthesId }
+        )
+    }
+
+    fun getLMSById(lms: Long): Flow<StateLMS> {
+        return flowOf(
+            stateLMS.first { it.lms.id == lms }
         )
     }
 

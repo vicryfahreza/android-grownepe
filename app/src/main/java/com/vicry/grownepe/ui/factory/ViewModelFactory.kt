@@ -9,6 +9,9 @@ import com.vicry.grownepe.ui.screen.article.naturalhybrid.articlehybrid.NaturalH
 import com.vicry.grownepe.ui.screen.article.naturalhybrid.detailhybrid.DetailNHViewModel
 import com.vicry.grownepe.ui.screen.article.spesies.articlespecies.SpeciesViewModel
 import com.vicry.grownepe.ui.screen.article.spesies.detailspecies.DetailSpeciesViewModel
+import com.vicry.grownepe.ui.screen.home.HomeViewModel
+import com.vicry.grownepe.ui.screen.lms.LmsViewModel
+import com.vicry.grownepe.ui.screen.lms.detailLms.DetailLmsModel
 
 class ViewModelFactory(private val repo: NepenthesRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -26,7 +29,14 @@ class ViewModelFactory(private val repo: NepenthesRepository) : ViewModelProvide
             return DetailSpeciesViewModel(repo) as T
         } else if (modelClass.isAssignableFrom(SpeciesViewModel::class.java)) {
             return SpeciesViewModel(repo) as T
+        } else if (modelClass.isAssignableFrom(LmsViewModel::class.java)) {
+            return LmsViewModel(repo) as T
+        } else if (modelClass.isAssignableFrom(DetailLmsModel::class.java)) {
+            return DetailLmsModel(repo) as T
+        } else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            return HomeViewModel(repo) as T
         }
+
         throw IllegalArgumentException("Not Found ViewModel class: " + modelClass.name)
     }
 
