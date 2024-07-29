@@ -13,6 +13,23 @@
     <string name="article_natural_hybrid_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1721979866/Nepenthes/article-home/natural-hybrid-banner_dtuxay.jpg</string>
     <string name="article_cultivar_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1721979867/Nepenthes/article-home/cultivar-banner_hpull1.jpg</string>
 
+    <!--  Detection  -->
+    <string name="mirabilis_description">Nepenthes mirabilis sangat mudah untuk dipelihara dan dapat tumbuh di lingkungan low land hingga highland.</string>
+    <string name="mirabilis_soil">Media Tanam : Spagnum Moss + Perlite atau Cocopeat + sekam bakar</string>
+    <string name="rafflesiana_description">Nepenthes rafflesiana menyukai kelembapan yang tinggi dan dapat ditempatkan dengan tatakan air.</string>
+    <string name="rafflesiana_soil">Media Tanam : Cocopeat + sekam bakar</string>
+    <string name="ampullaria_description">Nepenthes ampullaria sangat cocok untuk kondisi low land dan menyukai kelembapan tinggi</string>
+    <string name="ampullaria_soil">Media Tanam : Cocopeat + sekam bakar atau coco husk + cocopeat</string>
+    <string name="gracilis_description">Nepenthes gracilis adalah jenis yang direkomendasikan untuk pemula karena ketahanannya yang sangat baik serta dapat hidup di kondisi lowland maupun highland.</string>
+    <string name="gracilis_soil">Media Tanam : Spagnum Moss + Perlite</string>
 
+
+
+    <!--  Home  -->
+    <string name="home_top_bar">Nepenthes APP</string>
+    <string name="home_label1">Rekomendasi Nepenthes Low Land</string>
+    <string name="home_label2">Pilihan Media Tanam</string>
+    <string name="home_desc_short">Tanaman Nepenthes atau kantung semar adalah genus tanaman yang mengadaptasi karakter unik dengan menghasilkan kantong untuk menangkap serangga sebagai bentuk adaptasi.
+    </string>
 
 </resources>

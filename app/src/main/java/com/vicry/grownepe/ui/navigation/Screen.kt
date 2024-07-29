@@ -6,6 +6,10 @@ sealed class Screen(val route: String) {
     object Detection: Screen("detection")
     object LMS: Screen("lms")
 
+    object DetailLMS : Screen("lms/{moduleId}") {
+        fun createRoute(moduleId: Long) = "lms/$moduleId"
+    }
+
     object ArticleSpesies : Screen("species")
 
     object DetailSpecies : Screen("species/{nepenthesId}") {

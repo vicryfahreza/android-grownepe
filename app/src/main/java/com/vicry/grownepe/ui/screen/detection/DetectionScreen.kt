@@ -32,8 +32,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.vicry.grownepe.R
 import com.vicry.grownepe.utils.TensorfLowLiteHelper.ClassifyImage
 
 private var imageSize = 224
@@ -42,8 +45,8 @@ private var imageSize = 224
 @Composable
 fun DetectionScreen(modifier: Modifier = Modifier) {
     Box(
-        modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
+        modifier = modifier.fillMaxSize()
     ) {
         Column {
             Spacer(modifier = Modifier
@@ -110,7 +113,7 @@ fun ImagePicker() {
                 )
             }
 
-            val scaledBitmap = Bitmap.createScaledBitmap(it, imageSize, imageSize, false);
+            val scaledBitmap = Bitmap.createScaledBitmap(it, imageSize, imageSize, false)
             ClassifyImage(scaledBitmap) {
                 Column(
                     modifier = Modifier
@@ -126,6 +129,12 @@ fun ImagePicker() {
                     )
                     Text(text = "Image is classified as:", color = Color.Yellow, fontSize = 16.sp)
                     Text(text = it, color = Color.White, fontSize = 24.sp)
+
+                    Spacer(modifier = Modifier
+                        .padding(10.dp)
+                        .height(200.dp)
+                    )
+                    TextDetection(it)
                 }
             }
         }
@@ -137,9 +146,50 @@ fun ImagePicker() {
 
         Button(onClick = {
             launcher.launch("image/*")
-        }, modifier = Modifier.fillMaxWidth()) {
+        }, modifier = Modifier.fillMaxWidth().padding(10.dp)) {
             Text(text = "Deteksi Jenis Nepenthes")
         }
     }
 }
+
+@Composable
+fun TextDetection(detect: String, modifier: Modifier = Modifier){
+    when (detect) {
+        "mirabilis" -> {
+            Text(text = stringResource(R.string.mirabilis_description), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.mirabilis_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+        }
+        "ampullaria" -> {
+            Text(text = stringResource(R.string.ampullaria_description), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.ampullaria_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+        }
+        "rafflesiana" -> {
+            Text(text = stringResource(R.string.rafflesiana_description), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.rafflesiana_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+        }
+        else -> {
+            Text(text = stringResource(R.string.gracilis_description), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.gracilis_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+        }
+    }
+}
+
+@Composable
+fun TextSoilDetection(detect: String){
+    when (detect) {
+        "mirabilis" -> {
+            Text(text = stringResource(R.string.mirabilis_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify)
+        }
+        "ampullaria" -> {
+            Text(text = stringResource(R.string.ampullaria_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify)
+        }
+        "rafflesiana" -> {
+            Text(text = stringResource(R.string.rafflesiana_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify)
+        }
+        else -> {
+            Text(text = stringResource(R.string.gracilis_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify)
+        }
+    }
+}
+
 
