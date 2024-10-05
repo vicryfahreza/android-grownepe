@@ -4,7 +4,6 @@ import android.graphics.Bitmap
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import com.vicry.grownepe.ml.NepenthesModel
-import com.vicry.grownepe.ml.NepenthesModelV4
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteBuffer
@@ -12,15 +11,15 @@ import java.nio.ByteOrder
 
 object TensorfLowLiteHelper {
 
-    val imageSize = 224
+    val imageSize = 160
 
     @Composable
     fun ClassifyImage(image: Bitmap, callback : (@Composable (nepenthes : String) -> Unit)) {
-        val model: NepenthesModelV4 = NepenthesModelV4.newInstance(LocalContext.current)
+        val model: NepenthesModel = NepenthesModel.newInstance(LocalContext.current)
 
         // Creates inputs for reference.
         val inputFeature0 =
-            TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
+            TensorBuffer.createFixedSize(intArrayOf(1, 160, 160, 3), DataType.FLOAT32)
         val byteBuffer: ByteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3)
         byteBuffer.order(ByteOrder.nativeOrder())
         val intValues = IntArray(imageSize * imageSize)
@@ -38,7 +37,7 @@ object TensorfLowLiteHelper {
         inputFeature0.loadBuffer(byteBuffer)
 
         // Runs model inference and gets result.
-        val outputs: NepenthesModelV4.Outputs = model.process(inputFeature0)
+        val outputs: NepenthesModel.Outputs = model.process(inputFeature0)
         val outputFeature0: TensorBuffer = outputs.getOutputFeature0AsTensorBuffer()
         val confidences = outputFeature0.floatArray
         // find the index of the class with the biggest confidence.
@@ -50,11 +49,11 @@ object TensorfLowLiteHelper {
                 maxPos = i
             }
         }
-        val classes = arrayOf("ampullaria", "gracilis", "mirabilis", "rafflesiana")
+        val classes = arrayOf("acak","alata","ampullaria", "clipeata", "gracilis", "merilliana", "rafflesiana", "veitchii", "ventricosa")
 
         var s = ""
         for (i in classes.indices) {
-            s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100)
+            s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 0.1)
         }
 
         println("PREDIKSI == $s")
