@@ -1,5 +1,6 @@
 package com.vicry.grownepe.model.repo
 
+
 import com.vicry.grownepe.model.home.StateLowLandNepe
 import com.vicry.grownepe.model.home.StateSoil
 import com.vicry.grownepe.model.home.data.LowLandNepeData
@@ -100,6 +101,7 @@ class NepenthesRepository {
     fun getAllSoil(): Flow<List<StateSoil>> {
         return flowOf(stateSoil)
     }
+
 
 
     fun getNepenthesById(nepenthesId: Long): Flow<StateNepenthes> {

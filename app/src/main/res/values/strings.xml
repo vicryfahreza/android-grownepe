@@ -14,15 +14,64 @@
     <string name="article_cultivar_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1721979867/Nepenthes/article-home/cultivar-banner_hpull1.jpg</string>
 
     <!--  Detection  -->
-    <string name="mirabilis_description">Nepenthes mirabilis sangat mudah untuk dipelihara dan dapat tumbuh di lingkungan low land hingga highland.</string>
-    <string name="mirabilis_soil">Media Tanam : Spagnum Moss + Perlite atau Cocopeat + sekam bakar</string>
-    <string name="rafflesiana_description">Nepenthes rafflesiana menyukai kelembapan yang tinggi dan dapat ditempatkan dengan tatakan air.</string>
-    <string name="rafflesiana_soil">Media Tanam : Cocopeat + sekam bakar</string>
+    <string name="acak_description">Maaf hasil deteksi bukan tanaman kantong semar</string>
+
+    <!--  Alata  -->
+    <string name="alata_description">Nepenthes Alata Berasal dari Phillipines dan memliki persebaran yang luas sehingga memiliki bentuk dan ukuran yang beragam. Adapun hasil silangan dari nepenthes ini yang terkenal adalah Nepenthes Ventrata (Alata X Ventricossa) dan Alata X Truncata. </string>
+    <string name="alata_locality">Spesies ini berasal dari Philippines</string>
+    <string name="alata_height">Spesies ini mampu hidup dari ketinggian 550 M - 1650 M </string>
+    <string name="alata_height_land">Intermediate Hingga Highland</string>
+    <string name="alata_care">Disarankan untuk memelihara hasil silangan yang lebih adaptif</string>
+    <string name="alata_soil">Sangat menyukai media tanam organik mulai dari Cocopeat + Sekam Bakar atau Spagnum Moss + Perlite</string>
+
     <string name="ampullaria_description">Nepenthes ampullaria sangat cocok untuk kondisi low land dan menyukai kelembapan tinggi</string>
-    <string name="ampullaria_soil">Media Tanam : Cocopeat + sekam bakar atau coco husk + cocopeat</string>
+    <string name="ampullaria_locality">Spesies ini tersebar dari : Borneo, Kepulauan Maluku, Papua Nugini, Malaysia, Singapura, Sumatera dan Thailand</string>
+    <string name="ampullaria_height">Spesies ini mampu hidup dari ketinggian 0 M - 2100 M </string>
+    <string name="ampullaria_height_land">Lowland Hingga HighLand </string>
+    <string name="ampullaria_care">Mudah Untuk Ditanam Bagi Pemula</string>
+    <string name="ampullaria_soil">Rekomendasi Media Tanam Campuran Cocopeat, CocoHusk dan Sekam Bakar</string>
+
+    <string name="clipeata_description">Nepenthes Clipeata</string>
+    <string name="clipeata_locality">Spesies ini endemik berasal dari Borneo</string>
+    <string name="clipeata_height">Spesies ini mampu hidup dari ketinggian 600 M - 800 M </string>
+    <string name="clipeata_height_land">Lowland</string>
+    <string name="clipeata_care">Spesies dari Clipeata terancam punah disarankan memelihara hasil silangan</string>
+    <string name="clipeata_soil">Media Tanam : Spagnum Moss + Perlite</string>
+
     <string name="gracilis_description">Nepenthes gracilis adalah jenis yang direkomendasikan untuk pemula karena ketahanannya yang sangat baik serta dapat hidup di kondisi lowland maupun highland.</string>
+    <string name="gracilis_locality">Spesies ini tersebar dari : Borneo, Malaysia, Singapuar, Sumatera, Sulawesi dan Thailand</string>
+    <string name="gracilis_height">Spesies ini mampu hidup dari ketinggian 0 M - 1100 M </string>
+    <string name="gracilis_height_land">Lowland hingga Intermediate</string>
+    <string name="gracilis_care">Sangat direkomendasikan bagi pemula yang baru mencoba menanam kantong semar</string>
     <string name="gracilis_soil">Media Tanam : Spagnum Moss + Perlite</string>
 
+    <string name="merillian_description">Nepenthes merilliana</string>
+    <string name="merillian_locality">Spesies ini endemik dari Philippines</string>
+    <string name="merillian_height">Spesies ini mampu hidup dari ketinggian 0 M - 1100 M </string>
+    <string name="merillian_height_land">Lowland hingga Intermediate</string>
+    <string name="merillian_care">Spesies jenis ini mudah untuk ditanam </string>
+    <string name="merillian_soil">Media Tanam : Spagnum Moss + Perlite</string>
+
+    <string name="rafflesiana_description">Nepenthes rafflesiana menyukai kelembapan yang tinggi dan dapat ditempatkan dengan tatakan air.</string>
+    <string name="rafflesiana_locality">Spesies ini tersebar dari : Borneo, Sumatera, Malaysia dan Singapura</string>
+    <string name="rafflesiana_height">Spesies ini mampu hidup dari ketinggian 0 M - 1200 M </string>
+    <string name="rafflesiana_height_land">Lowland hingga Intermediate</string>
+    <string name="rafflesiana_care">Spesies jenis ini memiliki perawatan yang mirip dengan ampullaria</string>
+    <string name="rafflesiana_soil">Media Tanam : Cocopeat + sekam bakar</string>
+
+    <string name="veitchii_description">Nepenthes veitchii.</string>
+    <string name="veitchii_locality">Spesies ini endemik dari Borneo Indonesia</string>
+    <string name="veitchii_height">Spesies ini mampu hidup dari ketinggian 0 M - 1600 M </string>
+    <string name="veitchii_height_land">Lowland hingga Highland</string>
+    <string name="veitchii_care">Spesies nepenthes ini menyukai media yang poros dan tidak terlalu lembap</string>
+    <string name="veitchii_soil">Spagnum Moss + Perlite</string>
+
+    <string name="ventricosa_description">Nepenthes ventricosa.</string>
+    <string name="ventricosa_locality">Spesies ini Endemik dari Philippines</string>
+    <string name="ventricosa_height">Spesies ini mampu hidup dari ketinggian 1000 M - 2000 M </string>
+    <string name="ventricosa_height_land">Intermediate hingga Highland</string>
+    <string name="ventricosa_care">Membutuhkan suhu yang rendah untuk menanam nepenthes jenis ini</string>
+    <string name="ventricosa_soil">Spagnum Moss + Perlite</string>
 
 
     <!--  Home  -->

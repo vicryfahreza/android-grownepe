@@ -29,7 +29,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -39,11 +38,11 @@ import androidx.compose.ui.unit.sp
 import com.vicry.grownepe.R
 import com.vicry.grownepe.utils.TensorfLowLiteHelper.ClassifyImage
 
-private var imageSize = 224
-
+private var imageSize = 160
 
 @Composable
-fun DetectionScreen(modifier: Modifier = Modifier) {
+fun DetectionScreen(
+    modifier: Modifier = Modifier,) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier.fillMaxSize()
@@ -54,8 +53,10 @@ fun DetectionScreen(modifier: Modifier = Modifier) {
                 .height(5.dp)
             )
             ImagePicker()
+
         }
     }
+
 }
 
 @Composable
@@ -100,7 +101,7 @@ fun ImagePicker() {
         bitmap?.let {
             Image(
                 bitmap = it.asImageBitmap(),
-                contentDescription = "Image from the gallery",
+                contentDescription = "Pilih Gambar Dari Galeri",
                 Modifier
                     .size(400.dp)
                     .padding(vertical = 70.dp)
@@ -127,8 +128,8 @@ fun ImagePicker() {
                         .padding(10.dp)
                         .height(5.dp)
                     )
-                    Text(text = "Image is classified as:", color = Color.Yellow, fontSize = 16.sp)
-                    Text(text = it, color = Color.White, fontSize = 24.sp)
+                    Text(text = "Spesies Kantong Semar Yang Terdeteksi: ", fontSize = 16.sp)
+                    Text(text = it, fontSize = 24.sp)
 
                     Spacer(modifier = Modifier
                         .padding(10.dp)
@@ -146,7 +147,9 @@ fun ImagePicker() {
 
         Button(onClick = {
             launcher.launch("image/*")
-        }, modifier = Modifier.fillMaxWidth().padding(10.dp)) {
+        }, modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp)) {
             Text(text = "Deteksi Jenis Nepenthes")
         }
     }
@@ -155,41 +158,44 @@ fun ImagePicker() {
 @Composable
 fun TextDetection(detect: String, modifier: Modifier = Modifier){
     when (detect) {
-        "mirabilis" -> {
-            Text(text = stringResource(R.string.mirabilis_description), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
-            Text(text = stringResource(R.string.mirabilis_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+        "acak" -> {
+            Text(text = stringResource(R.string.acak_description), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+        }
+        "alata" -> {
+            Text(text = stringResource(R.string.alata_description), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.alata_soil), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
         }
         "ampullaria" -> {
-            Text(text = stringResource(R.string.ampullaria_description), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
-            Text(text = stringResource(R.string.ampullaria_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.ampullaria_description), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.ampullaria_soil), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+        }
+        "clipeata" -> {
+            Text(text = stringResource(R.string.clipeata_description), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.clipeata_soil), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+        }
+        "gracilis" -> {
+            Text(text = stringResource(R.string.gracilis_description), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.gracilis_soil), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+        }
+        "merilliana" -> {
+            Text(text = stringResource(R.string.merillian_description), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.merillian_soil), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
         }
         "rafflesiana" -> {
-            Text(text = stringResource(R.string.rafflesiana_description), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
-            Text(text = stringResource(R.string.rafflesiana_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.rafflesiana_description), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.rafflesiana_soil), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
         }
-        else -> {
-            Text(text = stringResource(R.string.gracilis_description), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
-            Text(text = stringResource(R.string.gracilis_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+        "veitchii" -> {
+            Text(text = stringResource(R.string.veitchii_description), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.veitchii_soil), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
         }
+        "ventricosa" -> {
+            Text(text = stringResource(R.string.ventricosa_description), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+            Text(text = stringResource(R.string.ventricosa_soil), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
+        }
+
     }
 }
 
-@Composable
-fun TextSoilDetection(detect: String){
-    when (detect) {
-        "mirabilis" -> {
-            Text(text = stringResource(R.string.mirabilis_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify)
-        }
-        "ampullaria" -> {
-            Text(text = stringResource(R.string.ampullaria_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify)
-        }
-        "rafflesiana" -> {
-            Text(text = stringResource(R.string.rafflesiana_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify)
-        }
-        else -> {
-            Text(text = stringResource(R.string.gracilis_soil), color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Justify)
-        }
-    }
-}
 
 
