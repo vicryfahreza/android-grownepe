@@ -102,6 +102,17 @@ class NepenthesRepository {
         return flowOf(stateSoil)
     }
 
+    fun getHomeNepeById(lowlandId: Long): Flow<StateLowLandNepe> {
+        return flowOf(
+            stateLowLand.first { it.lowLand.id == lowlandId }
+        )
+    }
+
+    fun getHomeSoilById(soilId: Long): Flow<StateSoil> {
+        return flowOf(
+            stateSoil.first { it.soil.id == soilId }
+        )
+    }
 
 
     fun getNepenthesById(nepenthesId: Long): Flow<StateNepenthes> {

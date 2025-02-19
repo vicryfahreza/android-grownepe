@@ -1,10 +1,12 @@
 package com.vicry.grownepe.ui.screen.detection
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -32,10 +34,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vicry.grownepe.R
+import com.vicry.grownepe.ui.screen.article.ArticleScreen
+import com.vicry.grownepe.ui.theme.GrowNepeTheme
 import com.vicry.grownepe.utils.TensorfLowLiteHelper.ClassifyImage
 
 private var imageSize = 160
@@ -53,7 +59,6 @@ fun DetectionScreen(
                 .height(5.dp)
             )
             ImagePicker()
-
         }
     }
 
@@ -145,13 +150,38 @@ fun ImagePicker() {
             .height(50.dp)
         )
 
-        Button(onClick = {
-            launcher.launch("image/*")
-        }, modifier = Modifier
-            .fillMaxWidth()
-            .padding(10.dp)) {
-            Text(text = "Deteksi Jenis Nepenthes")
+        Row(
+            modifier = Modifier.width(400.dp),
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Button(onClick = {
+                launcher.launch("image/*")
+            }, modifier = Modifier
+                .padding(10.dp)) {
+                Text(text = "Image Detection")
+            }
+            RoboflowDetection()
         }
+    }
+}
+
+@Composable
+fun RoboflowDetection(){
+    val url = "nepenthes-detection/1?publishable_key="
+    val publishableKey = "rf_IiCPIQrNIKVCWdtJasxc5BJL9qr1"
+    val ctx = LocalContext.current
+
+    Button(onClick = {
+        Log.e("tag","URL IS "+url)
+        val urlIntent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse("https://demo.roboflow.com/$url/$publishableKey")
+        )
+        ctx.startActivity(urlIntent)
+    }, modifier = Modifier
+        .padding(10.dp)) {
+        Text(text = "Live Detection")
     }
 }
 
@@ -194,6 +224,14 @@ fun TextDetection(detect: String, modifier: Modifier = Modifier){
             Text(text = stringResource(R.string.ventricosa_soil), fontSize = 16.sp, textAlign = TextAlign.Justify, modifier = modifier.padding(10.dp))
         }
 
+    }
+}
+
+@Composable
+@Preview(showBackground = true)
+fun DetailPreview() {
+    GrowNepeTheme {
+        DetectionScreen()
     }
 }
 

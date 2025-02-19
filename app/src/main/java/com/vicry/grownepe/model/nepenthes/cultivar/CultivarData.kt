@@ -15,9 +15,6 @@ object CultivarData {
             "",
             "",
             "",
-            "",
-            "",
-            "",
             "Cultivar"
         ),
         Nepenthes(
@@ -28,9 +25,6 @@ object CultivarData {
             "60%",
             "spagnum-moss",
             "Low Land",
-            "",
-            "",
-            "",
             "",
             "",
             "",
@@ -47,9 +41,6 @@ object CultivarData {
             "",
             "",
             "",
-            "",
-            "",
-            "",
             "Cultivar"
         ),
         Nepenthes(
@@ -63,9 +54,6 @@ object CultivarData {
             "",
             "",
             "",
-            "",
-            "",
-            "",
             "Cultivar"
         ),
         Nepenthes(
@@ -76,9 +64,6 @@ object CultivarData {
             "80%",
             "spagnum-moss, cocopeat",
             "Low Land",
-            "",
-            "",
-            "",
             "",
             "",
             "",

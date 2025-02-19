@@ -59,7 +59,9 @@ object TensorfLowLiteHelper {
         println("PREDIKSI == $s")
 
 
-        callback.invoke(classes[maxPos])
+        if(maxConfidence > 0.5) {
+            callback.invoke(classes[maxPos])
+        }
 
         // Releases model resources if no longer used.
         model.close()
