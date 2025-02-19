@@ -32,8 +32,13 @@ import com.vicry.grownepe.ui.screen.article.naturalhybrid.articlehybrid.NaturalH
 import com.vicry.grownepe.ui.screen.article.naturalhybrid.detailhybrid.DetailNHScreen
 import com.vicry.grownepe.ui.screen.article.spesies.articlespecies.SpeciesScreen
 import com.vicry.grownepe.ui.screen.article.spesies.detailspecies.DetailSpeciesScreen
+import com.vicry.grownepe.ui.screen.article.info.InfoCultivarScreen
+import com.vicry.grownepe.ui.screen.article.info.InfoNaturalHybridScreen
+import com.vicry.grownepe.ui.screen.article.info.InfoSpeciesScreen
 import com.vicry.grownepe.ui.screen.detection.DetectionScreen
 import com.vicry.grownepe.ui.screen.home.HomeScreen
+import com.vicry.grownepe.ui.screen.home.homenepe.HomeNepeScreen
+import com.vicry.grownepe.ui.screen.home.homesoil.HomeSoilScreen
 import com.vicry.grownepe.ui.screen.lms.LmsScreen
 import com.vicry.grownepe.ui.screen.lms.detailLms.DetailLmsScreen
 import com.vicry.grownepe.ui.theme.GrowNepeTheme
@@ -55,8 +60,20 @@ fun JetGrowNepeApp(
             modifier = Modifier.padding(innerPadding)
         ){
             composable(Screen.Home.route){
-                HomeScreen()
+                HomeScreen(
+                    sectionTopBar = stringResource(R.string.home_top_bar),
+                    banner = stringResource(R.string.article_natural_hybrid_banner),
+                    sectionSoil = stringResource(R.string.home_label2),
+                    sectionNepenthes =  stringResource(R.string.home_label1),
+                    navigateToLowLandNepe = { homeNepeId ->
+                        navController.navigate(Screen.HomeNepe.createRoute(homeNepeId))
+                    },
+                    navigateToSoil = { homeSoilId ->
+                        navController.navigate(Screen.HomeSoil.createRoute(homeSoilId))
+                    },
+                    )
             }
+
             composable(Screen.Detection.route){
                 DetectionScreen()
             }
@@ -68,11 +85,55 @@ fun JetGrowNepeApp(
                     speciesLabel = stringResource(R.string.article_species_label),
                     naturalLabel = stringResource(R.string.article_natural_hybrid_label),
                     cultivarLabel = stringResource(R.string.article_cultivar_label),
-                    navigateToSpesies = { navController.navigate(Screen.ArticleSpesies.route) },
-                    navigateToCultivar = { navController.navigate(Screen.ArticleCultivar.route) },
-                    navigateToNaturalHybrid = { navController.navigate(Screen.ArticleNaturalHybrid.route) },
+                    navigateToSpesies = { navController.navigate(Screen.InfoSpecies.route) },
+                    navigateToCultivar = { navController.navigate(Screen.InfoCultivar.route) },
+                    navigateToNaturalHybrid = { navController.navigate(Screen.InfoNaturalHybrid.route) },
                 )
             }
+            composable(Screen.InfoSpecies.route){
+                InfoSpeciesScreen(
+                    infoSpeciesImage = stringResource(R.string.article_species_banner),
+                    infoSpeciesText = stringResource(R.string.article_info_species_text),
+                    infoIUCNImage = stringResource(R.string.article_iucn_banner),
+                    infoIUCNText = stringResource(R.string.article_iucn_label),
+                    infoIUCNDescription = stringResource(R.string.article_iucn_description),
+                    speciesButton = stringResource(R.string.article_species_button),
+                    navigateToSpesies = {navController.navigate(Screen.ArticleSpesies.route)}
+                    )
+            }
+
+            composable(Screen.InfoCultivar.route){
+                InfoCultivarScreen(
+                    infoCultivarImage = stringResource(R.string.article_cultivar_banner),
+                    infoCultivarText = stringResource(R.string.article_info_cultivar_text),
+                    navigateToCultivar = {navController.navigate(Screen.ArticleCultivar.route)}
+                )
+            }
+
+            composable(Screen.InfoNaturalHybrid.route){
+                InfoNaturalHybridScreen(
+                    infoNHImage = stringResource(R.string.article_natural_hybrid_banner),
+                    infoNHText = stringResource(R.string.article_info_natural_hybrid_text),
+                    navigateToNaturalHybrid = {navController.navigate(Screen.ArticleNaturalHybrid.route)}
+                )
+            }
+
+            composable(
+                route = Screen.HomeNepe.route,
+                arguments = listOf(navArgument("homenepeId") { type = NavType.LongType })
+            ){
+                val id = it.arguments?.getLong("homenepeId") ?: -1L
+                HomeNepeScreen(homeNepeId = id)
+            }
+
+            composable(
+                route = Screen.HomeSoil.route,
+                arguments = listOf(navArgument("homesoilId") { type = NavType.LongType })
+            ){
+                val id = it.arguments?.getLong("homesoilId") ?: -1L
+                HomeSoilScreen(homeSoilId = id)
+            }
+
             composable(
                 route = Screen.DetailSpecies.route,
                 arguments = listOf(navArgument("nepenthesId") { type = NavType.LongType } )
@@ -80,6 +141,13 @@ fun JetGrowNepeApp(
                 val id = it.arguments?.getLong("nepenthesId") ?: -1L
                 DetailSpeciesScreen(
                     nepenthesId = id,
+                    labelDesc1 = stringResource(R.string.article_label_desc1),
+                    labelDesc2 = stringResource(R.string.article_label_desc2),
+                    labelEnv = stringResource(R.string.article_label_env),
+                    labelSoil = stringResource(R.string.article_label_soil),
+                    labelDistribution = stringResource(R.string.article_label_distribution),
+                    labelHeight = stringResource(R.string.article_label_height),
+                    labelIUCN = stringResource(R.string.article_label_iucn)
                 )
             }
             composable(
@@ -109,6 +177,7 @@ fun JetGrowNepeApp(
                     lmsId = id,
                 )
             }
+
             composable(Screen.ArticleSpesies.route) {
                 SpeciesScreen(
                     navigateToDetail = { nepenthesId ->

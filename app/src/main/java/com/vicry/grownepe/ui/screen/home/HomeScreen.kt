@@ -1,5 +1,6 @@
 package com.vicry.grownepe.ui.screen.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,15 +17,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.vicry.grownepe.R
 import com.vicry.grownepe.model.home.StateLowLandNepe
 import com.vicry.grownepe.model.home.StateSoil
 import com.vicry.grownepe.model.repo.NepenthesInjection
@@ -39,7 +37,13 @@ fun HomeScreen(
     viewModel: HomeViewModel = viewModel(
         factory =  ViewModelFactory(NepenthesInjection.provideRepository())
     ),
-) {
+    sectionTopBar: String,
+    banner: String,
+    sectionSoil: String,
+    sectionNepenthes: String,
+    navigateToSoil: (Long) -> Unit,
+    navigateToLowLandNepe: (Long) -> Unit,
+    ) {
     viewModel.uistatus.collectAsState(initial = UIStatus.Loading).value.let { uistatus ->
         when (uistatus) {
             is UIStatus.Loading -> {
@@ -55,14 +59,15 @@ fun HomeScreen(
                             rememberScrollState()
                         )
                     ){
-                        SectionTopBar()
-                        Banner()
-                        SectionNepenthes()
+                        SectionTopBar(modifier = modifier, sectionTopBar = sectionTopBar)
+                        Banner(modifier = modifier, banner = banner)
+                        SectionNepenthes(modifier = modifier, sectionNepenthes = sectionNepenthes)
                         LowLandContent(
                             state = uistatus.data,
                             modifier = modifier,
+                            navigateToLowLandNepe = navigateToLowLandNepe
                         )
-                        SectionSoil()
+                        SectionSoil(modifier = modifier, sectionSoil = sectionSoil)
                         viewModel.uistatusSoil.collectAsState(initial = UIStatus.Loading).value.let { uistatusSoil ->
                             when (uistatusSoil) {
                                 is UIStatus.Loading -> {
@@ -71,7 +76,8 @@ fun HomeScreen(
                                 is UIStatus.Success -> {
                                     SoilContent(
                                         state = uistatusSoil.data,
-                                        modifier = modifier
+                                        modifier = modifier,
+                                        navigateToSoil = navigateToSoil
                                     )
                                 }
                                 is UIStatus.Error -> {}
@@ -86,12 +92,11 @@ fun HomeScreen(
 }
 
 @Composable
-fun SectionTopBar(modifier: Modifier = Modifier) {
+fun SectionTopBar(modifier: Modifier = Modifier, sectionTopBar: String) {
     Text(
-        text = stringResource(R.string.home_top_bar),
+        text = sectionTopBar,
         fontWeight = FontWeight.Bold,
         fontSize = 18.sp,
-        color = Color.Black,
         modifier = modifier
             .padding(10.dp)
             .fillMaxWidth()
@@ -99,8 +104,8 @@ fun SectionTopBar(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun Banner(modifier: Modifier = Modifier){
-    AsyncImage(model = stringResource(R.string.article_natural_hybrid_banner),
+fun Banner(modifier: Modifier = Modifier, banner: String){
+    AsyncImage(model = banner,
         contentDescription = null,
         contentScale = ContentScale.Fit,
         modifier = modifier
@@ -109,13 +114,12 @@ fun Banner(modifier: Modifier = Modifier){
 }
 
 @Composable
-fun SectionSoil(modifier: Modifier = Modifier ) {
+fun SectionSoil(modifier: Modifier = Modifier , sectionSoil: String) {
     Row {
         Text(
-            text = stringResource(R.string.home_label2),
+            text = sectionSoil,
             fontWeight = FontWeight.Bold,
             fontSize = 18.sp,
-            color = Color.Black,
             modifier = modifier
                 .padding(10.dp)
                 .fillMaxWidth()
@@ -125,13 +129,12 @@ fun SectionSoil(modifier: Modifier = Modifier ) {
 }
 
 @Composable
-fun SectionNepenthes(modifier: Modifier = Modifier) {
+fun SectionNepenthes(modifier: Modifier = Modifier, sectionNepenthes: String) {
     Row {
         Text(
-            text = stringResource(R.string.home_label1),
+            text = sectionNepenthes,
             fontWeight = FontWeight.Bold,
             fontSize = 18.sp,
-            color = Color.Black,
             modifier = modifier
                 .padding(10.dp)
                 .fillMaxWidth()
@@ -143,6 +146,7 @@ fun SectionNepenthes(modifier: Modifier = Modifier) {
 @Composable
 fun LowLandContent(
     state: List<StateLowLandNepe>,
+    navigateToLowLandNepe: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyRow(
@@ -155,6 +159,9 @@ fun LowLandContent(
                 name = data.lowLand.name,
                 image = data.lowLand.image,
                 type = data.lowLand.type,
+                modifier = Modifier.clickable {
+                    navigateToLowLandNepe(data.lowLand.id)
+                }
             )
         }
     }
@@ -163,6 +170,7 @@ fun LowLandContent(
 @Composable
 fun SoilContent(
     state: List<StateSoil>,
+    navigateToSoil: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyRow(
@@ -173,8 +181,10 @@ fun SoilContent(
         items(state) {data ->
             SoilRow(
                 name = data.soil.name,
-                image = data.soil.image
-            )
+                image = data.soil.image,
+                modifier = Modifier.clickable {
+                    navigateToSoil(data.soil.id)
+                })
         }
     }
 }

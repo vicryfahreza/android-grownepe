@@ -1,6 +1,6 @@
 package com.vicry.grownepe.model.nepenthes
 
-data class Nepenthes (
+data class NaturalHybridNepenthes (
     val id: Long,
     val name: String,
     val image: String,
@@ -8,8 +8,6 @@ data class Nepenthes (
     val imageSource: String,
     val bestSoil: String,
     val bestEnvironment: String,
-    val description2: String,
-    val height: String,
-    val statusIUCN: String,
+    val cross: String,
     val distribution: String,
-    )
+)

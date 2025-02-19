@@ -14,7 +14,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,7 +48,6 @@ fun ArticleScreen(
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
                 modifier = modifier
-                    .padding(10.dp)
                     .width(400.dp)
                     .height(150.dp)
             )
@@ -61,7 +59,6 @@ fun ArticleScreen(
                     text = speciesLabel,
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp,
-                    color = Color.Black,
                     modifier = modifier
                         .padding(10.dp)
                         .fillMaxWidth()
@@ -89,7 +86,6 @@ fun ArticleScreen(
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
                 modifier = modifier
-                    .padding(10.dp)
                     .width(400.dp)
                     .height(150.dp)
             )
@@ -101,7 +97,6 @@ fun ArticleScreen(
                     text = cultivarLabel,
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp,
-                    color = Color.Black,
                     modifier = modifier
                         .padding(10.dp)
                         .fillMaxWidth()
@@ -127,7 +122,6 @@ fun ArticleScreen(
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
                 modifier = modifier
-                    .padding(10.dp)
                     .width(400.dp)
                     .height(150.dp)
             )
@@ -139,7 +133,6 @@ fun ArticleScreen(
                     text = naturalLabel,
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp,
-                    color = Color.Black,
                     modifier = modifier
                         .padding(10.dp)
                         .fillMaxWidth()

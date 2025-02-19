@@ -48,7 +48,6 @@ fun ArticleNepenthesRow(
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Medium,
             fontSize = 18.sp,
-            color = Color.Black,
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)

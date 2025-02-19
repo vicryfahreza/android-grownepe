@@ -9,15 +9,31 @@
     <string name="article_species_label">Nepenthes Species</string>
     <string name="article_natural_hybrid_label">Nepenthes Hybrid Alam</string>
     <string name="article_cultivar_label">Nepenthes Kultivar</string>
-    <string name="article_species_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1721979866/Nepenthes/article-home/species-banner_eemyuo.jpg</string>
-    <string name="article_natural_hybrid_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1721979866/Nepenthes/article-home/natural-hybrid-banner_dtuxay.jpg</string>
-    <string name="article_cultivar_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1721979867/Nepenthes/article-home/cultivar-banner_hpull1.jpg</string>
+    <string name="article_species_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1728288142/Nepenthes/article-home/species_banner_q7rbxi.png</string>
+    <string name="article_species_button">Lihat Spesies Nepenthes</string>
+    <string name="article_iucn_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1737265210/Nepenthes/IUCN/List_IUCN_jicmer.png</string>
+    <string name="article_iucn_label">Status IUCN</string>
+    <string name="article_iucn_description">IUCN adalah lembaga internasional yang bergerak untuk mengawasi keberlangsungan suatu spesies hewan dan tumbuhan guna mengetahui keberlangsungannya di alam liar.</string>
+    <string name="article_natural_hybrid_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1728288141/Nepenthes/article-home/natural_hybrid_banner_nlqzov.png</string>
+    <string name="article_cultivar_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1728288142/Nepenthes/article-home/cultivar_banner_icsewi.png</string>
+    <string name="article_label_desc1">Trivia Singkat</string>
+    <string name="article_label_desc2">Habitat</string>
+    <string name="article_label_iucn">Status IUCN</string>
+    <string name="article_label_soil">Media Tanam</string>
+    <string name="article_label_env">Optimal Tumbuh</string>
+    <string name="article_label_height">Ketinggian</string>
+    <string name="article_label_distribution">Persebaran</string>
+
+    <!--  Info Article  -->
+    <string name="article_info_species_text">Tanaman nepenthes memiliki persebaran spesies yang sangat luas mulai dari dataran tinggi hingga dataran rendah serta membutuhkan kondisi pemeliharaan mulai dari kelembapan dan suhu yang berbeda satu sama lain. Terdapat 197 spesies tanaman nepenthes yang dapat anda lihat pada menu pencarian species.</string>
+    <string name="article_info_cultivar_text">Persebaran tanaman nepenthes yang luas membuat satu spesies dapat memiliki bentuk-bentuk yang berbeda dan spesies dengan bentuk unik ini dapat di</string>
+    <string name="article_info_natural_hybrid_text">Persilangan tanaman nepenthes yang dibantu oleh manusia menciptakan hasil silangan yang sangat menarik.Namun di alam liar nepenthes dibantu oleh alam juga menghasilkan hasil silangan yang bahkan sempat dimasukkan ke spesies baru oleh para ilmuwan.</string>
 
     <!--  Detection  -->
     <string name="acak_description">Maaf hasil deteksi bukan tanaman kantong semar</string>
 
-    <!--  Alata  -->
-    <string name="alata_description">Nepenthes Alata Berasal dari Phillipines dan memliki persebaran yang luas sehingga memiliki bentuk dan ukuran yang beragam. Adapun hasil silangan dari nepenthes ini yang terkenal adalah Nepenthes Ventrata (Alata X Ventricossa) dan Alata X Truncata. </string>
+    <!--  Detection Species  -->
+    <string name="alata_description">Nepenthes Alata Berasal dari Philippines dan memliki persebaran yang luas sehingga memiliki bentuk dan ukuran yang beragam. Adapun hasil silangan dari nepenthes ini yang terkenal adalah Nepenthes Ventrata (Alata X Ventricossa) dan Alata X Truncata. </string>
     <string name="alata_locality">Spesies ini berasal dari Philippines</string>
     <string name="alata_height">Spesies ini mampu hidup dari ketinggian 550 M - 1650 M </string>
     <string name="alata_height_land">Intermediate Hingga Highland</string>
@@ -31,11 +47,11 @@
     <string name="ampullaria_care">Mudah Untuk Ditanam Bagi Pemula</string>
     <string name="ampullaria_soil">Rekomendasi Media Tanam Campuran Cocopeat, CocoHusk dan Sekam Bakar</string>
 
-    <string name="clipeata_description">Nepenthes Clipeata</string>
+    <string name="clipeata_description">Nepenthes Clipeata merupakan tanaman endemik dari indonesia yang memiliki ciri daun berbentuk melingkar dan bentuk kantung yang berukuran besar dan saat ini keberlangsungannya di alam liar sudah terancam punah.</string>
     <string name="clipeata_locality">Spesies ini endemik berasal dari Borneo</string>
     <string name="clipeata_height">Spesies ini mampu hidup dari ketinggian 600 M - 800 M </string>
     <string name="clipeata_height_land">Lowland</string>
-    <string name="clipeata_care">Spesies dari Clipeata terancam punah disarankan memelihara hasil silangan</string>
+    <string name="clipeata_care">Dikarenakan status tanaman ini yang terancam punah silahkan memelihara hasil silangan dari jenis nepenthes ini</string>
     <string name="clipeata_soil">Media Tanam : Spagnum Moss + Perlite</string>
 
     <string name="gracilis_description">Nepenthes gracilis adalah jenis yang direkomendasikan untuk pemula karena ketahanannya yang sangat baik serta dapat hidup di kondisi lowland maupun highland.</string>
@@ -45,12 +61,12 @@
     <string name="gracilis_care">Sangat direkomendasikan bagi pemula yang baru mencoba menanam kantong semar</string>
     <string name="gracilis_soil">Media Tanam : Spagnum Moss + Perlite</string>
 
-    <string name="merillian_description">Nepenthes merilliana</string>
+    <string name="merillian_description">Nepenthes merilliana merupakan spesies endemik dari philipina dan memiliki bentuk kantong yang besar dan tidak memanjang serta memiliki perakaran yang cepat sehingga disarankan untuk menanamnya di pot tinggi dengan media tanam porous seperti bebatuan </string>
     <string name="merillian_locality">Spesies ini endemik dari Philippines</string>
     <string name="merillian_height">Spesies ini mampu hidup dari ketinggian 0 M - 1100 M </string>
     <string name="merillian_height_land">Lowland hingga Intermediate</string>
     <string name="merillian_care">Spesies jenis ini mudah untuk ditanam </string>
-    <string name="merillian_soil">Media Tanam : Spagnum Moss + Perlite</string>
+    <string name="merillian_soil">Media Tanam : Komposisi batuan akadama dan peatmoss atau spagnum moss + perlite</string>
 
     <string name="rafflesiana_description">Nepenthes rafflesiana menyukai kelembapan yang tinggi dan dapat ditempatkan dengan tatakan air.</string>
     <string name="rafflesiana_locality">Spesies ini tersebar dari : Borneo, Sumatera, Malaysia dan Singapura</string>
@@ -59,23 +75,23 @@
     <string name="rafflesiana_care">Spesies jenis ini memiliki perawatan yang mirip dengan ampullaria</string>
     <string name="rafflesiana_soil">Media Tanam : Cocopeat + sekam bakar</string>
 
-    <string name="veitchii_description">Nepenthes veitchii.</string>
+    <string name="veitchii_description">Nepenthes veitchii merupakan salah satu tanaman nepenthes dengan pertumbuhan yang sangat lama serta bentuk kantong yang unik. Spesies ini sangat menyukai media tanam yang kering sehingga tidak menyukai media yang tergenang air. Jenis kultivar yang terkenal yaitu veitchii bareo yang memiliki bentuk peristome yang berbeda dari jenis lowland dan ukuran kantong yang lumayan jumbo.</string>
     <string name="veitchii_locality">Spesies ini endemik dari Borneo Indonesia</string>
     <string name="veitchii_height">Spesies ini mampu hidup dari ketinggian 0 M - 1600 M </string>
     <string name="veitchii_height_land">Lowland hingga Highland</string>
     <string name="veitchii_care">Spesies nepenthes ini menyukai media yang poros dan tidak terlalu lembap</string>
     <string name="veitchii_soil">Spagnum Moss + Perlite</string>
 
-    <string name="ventricosa_description">Nepenthes ventricosa.</string>
+    <string name="ventricosa_description">Nepenthes ventricosa merupakan spesies highland dari philipines dan spesies ini memiliki hasil silangan dengan nepenthes alata menjadi ventrata serta memiliki hasil silangan yang beragam. Jenis kultivar dari sepesies ini yang terkenal yaitu ventricossa porcelaine yang memiliki bentuk peristome yang unik dan membutuhkan perawatan highland.</string>
     <string name="ventricosa_locality">Spesies ini Endemik dari Philippines</string>
     <string name="ventricosa_height">Spesies ini mampu hidup dari ketinggian 1000 M - 2000 M </string>
     <string name="ventricosa_height_land">Intermediate hingga Highland</string>
-    <string name="ventricosa_care">Membutuhkan suhu yang rendah untuk menanam nepenthes jenis ini</string>
+    <string name="ventricosa_care">Membutuhkan perawatan highland untuk menanam pure spesies seperti porcelaine</string>
     <string name="ventricosa_soil">Spagnum Moss + Perlite</string>
 
 
     <!--  Home  -->
-    <string name="home_top_bar">Nepenthes APP</string>
+    <string name="home_top_bar">GrowNepe</string>
     <string name="home_label1">Rekomendasi Nepenthes Low Land</string>
     <string name="home_label2">Pilihan Media Tanam</string>
     <string name="home_desc_short">Tanaman Nepenthes atau kantung semar adalah genus tanaman yang mengadaptasi karakter unik dengan menghasilkan kantong untuk menangkap serangga sebagai bentuk adaptasi.

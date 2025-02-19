@@ -4,17 +4,17 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -51,8 +51,11 @@ fun DetailNHScreen(
                             detail.nepenthes.image,
                             detail.nepenthes.name,
                             detail.nepenthes.description,
-                            detail.nepenthes.bestSoil
-                        )
+                            detail.nepenthes.imageSource,
+                            detail.nepenthes.cross,
+                            detail.nepenthes.distribution,
+                            detail.nepenthes.bestSoil,
+                            )
                     }
                     is UIStatus.Error -> {}
                 }
@@ -66,20 +69,38 @@ fun DetailContent(
     image: String,
     name: String,
     description: String,
+    imgSrc: String,
+    cross: String,
+    origin: String,
     soil: String,
     modifier: Modifier = Modifier,
 ) {
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally
+//        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
         AsyncImage(model = image,
             contentDescription = null,
             contentScale = ContentScale.Fit,
             modifier = modifier
                 .padding(10.dp)
-                .size(200.dp)
-                .clip(CircleShape)
+                .width(400.dp)
+                .height(200.dp)
         )
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = imgSrc,
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+                modifier = modifier
+                    .padding(10.dp)
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(start = 8.dp)
+            )
+        }
 
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -88,7 +109,6 @@ fun DetailContent(
                 text = name,
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
-                color = Color.Black,
                 modifier = modifier
                     .padding(10.dp)
                     .fillMaxWidth()
@@ -105,7 +125,66 @@ fun DetailContent(
                 fontWeight = FontWeight.Normal,
                 fontSize = 18.sp,
                 textAlign = TextAlign.Justify,
-                color = Color.Black,
+                modifier = modifier
+                    .padding(10.dp)
+                    .weight(1f)
+                    .padding(start = 8.dp)
+            )
+        }
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Hybrid",
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                modifier = modifier
+                    .padding(10.dp)
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(start = 8.dp)
+            )
+        }
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = cross,
+                fontWeight = FontWeight.Normal,
+                fontSize = 18.sp,
+                textAlign = TextAlign.Justify,
+                modifier = modifier
+                    .padding(10.dp)
+                    .weight(1f)
+                    .padding(start = 8.dp)
+            )
+        }
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Persebaran",
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                modifier = modifier
+                    .padding(10.dp)
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(start = 8.dp)
+            )
+        }
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = origin,
+                fontWeight = FontWeight.Normal,
+                fontSize = 18.sp,
+                textAlign = TextAlign.Justify,
                 modifier = modifier
                     .padding(10.dp)
                     .weight(1f)
@@ -120,7 +199,6 @@ fun DetailContent(
                 text = "Soil Recomendation",
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
-                color = Color.Black,
                 modifier = modifier
                     .padding(10.dp)
                     .fillMaxWidth()
@@ -137,7 +215,6 @@ fun DetailContent(
                 fontWeight = FontWeight.Normal,
                 fontSize = 18.sp,
                 textAlign = TextAlign.Justify,
-                color = Color.Black,
                 modifier = modifier
                     .padding(10.dp)
                     .fillMaxWidth()
@@ -160,7 +237,10 @@ fun DetailPreview() {
             image = "",
             name = "Echeveria",
             description = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-            soil = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+            imgSrc = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+            cross = "",
+            origin = "",
+            soil = "",
         )
     }
 }
