@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -26,7 +25,6 @@ import coil.compose.AsyncImage
 import com.vicry.grownepe.model.repo.NepenthesInjection
 import com.vicry.grownepe.ui.factory.ViewModelFactory
 import com.vicry.grownepe.ui.state.UIStatus
-import com.vicry.grownepe.ui.theme.GrowNepeTheme
 
 @Composable
 fun DetailNHScreen(
@@ -196,7 +194,7 @@ fun DetailContent(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Soil Recomendation",
+                text = "Media Tanam",
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
                 modifier = modifier
@@ -229,18 +227,18 @@ fun DetailContent(
 
 }
 
-@Composable
-@Preview(showBackground = true)
-fun DetailPreview() {
-    GrowNepeTheme {
-        DetailContent(
-            image = "",
-            name = "Echeveria",
-            description = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-            imgSrc = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-            cross = "",
-            origin = "",
-            soil = "",
-        )
-    }
-}
+//@Composable
+//@Preview(showBackground = true)
+//fun DetailPreview() {
+//    GrowNepeTheme {
+//        DetailContent(
+//            image = "",
+//            name = "Echeveria",
+//            description = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+//            imgSrc = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+//            cross = "",
+//            origin = "",
+//            soil = "",
+//        )
+//    }
+//}

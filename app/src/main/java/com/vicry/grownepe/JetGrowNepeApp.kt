@@ -62,7 +62,7 @@ fun JetGrowNepeApp(
             composable(Screen.Home.route){
                 HomeScreen(
                     sectionTopBar = stringResource(R.string.home_top_bar),
-                    banner = stringResource(R.string.article_natural_hybrid_banner),
+                    banner = stringResource(R.string.home_banner),
                     sectionSoil = stringResource(R.string.home_label2),
                     sectionNepenthes =  stringResource(R.string.home_label1),
                     navigateToLowLandNepe = { homeNepeId ->

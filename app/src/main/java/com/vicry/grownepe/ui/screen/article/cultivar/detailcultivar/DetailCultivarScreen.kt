@@ -6,21 +6,16 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -28,7 +23,6 @@ import coil.compose.AsyncImage
 import com.vicry.grownepe.model.repo.NepenthesInjection
 import com.vicry.grownepe.ui.factory.ViewModelFactory
 import com.vicry.grownepe.ui.state.UIStatus
-import com.vicry.grownepe.ui.theme.GrowNepeTheme
 
 @Composable
 fun DetailCultivarScreen(
@@ -117,7 +111,7 @@ fun DetailContent(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Soil Recomendation",
+                text = "Media Tanam",
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
                 modifier = modifier
@@ -150,15 +144,15 @@ fun DetailContent(
 
 }
 
-@Composable
-@Preview(showBackground = true)
-fun DetailPreview() {
-    GrowNepeTheme {
-        DetailContent(
-            image = "",
-            name = "Echeveria",
-            description = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-            soil = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-        )
-    }
-}
+//@Composable
+//@Preview(showBackground = true)
+//fun DetailPreview() {
+//    GrowNepeTheme {
+//        DetailContent(
+//            image = "",
+//            name = "Echeveria",
+//            description = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+//            soil = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+//        )
+//    }
+//}
