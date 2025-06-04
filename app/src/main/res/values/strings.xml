@@ -9,15 +9,15 @@
     <string name="article_species_label">Nepenthes Species</string>
     <string name="article_natural_hybrid_label">Nepenthes Hybrid Alam</string>
     <string name="article_cultivar_label">Nepenthes Kultivar</string>
-    <string name="article_species_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1728288142/Nepenthes/article-home/species_banner_q7rbxi.png</string>
+    <string name="article_species_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1744086409/Nepenthes/article-home/article-banner/Article-Species_ygf0ra.png</string>
     <string name="article_species_button">Lihat Spesies Nepenthes</string>
     <string name="article_iucn_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1737265210/Nepenthes/IUCN/List_IUCN_jicmer.png</string>
     <string name="article_iucn_label">Status IUCN</string>
     <string name="article_iucn_description">IUCN adalah lembaga internasional yang bergerak untuk mengawasi keberlangsungan suatu spesies hewan dan tumbuhan guna mengetahui keberlangsungannya di alam liar.</string>
-    <string name="article_natural_hybrid_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1728288141/Nepenthes/article-home/natural_hybrid_banner_nlqzov.png</string>
-    <string name="article_cultivar_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1728288142/Nepenthes/article-home/cultivar_banner_icsewi.png</string>
+    <string name="article_natural_hybrid_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1744086408/Nepenthes/article-home/article-banner/Article-Hybrid-Alam_n2ol9l.png</string>
+    <string name="article_cultivar_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1744086409/Nepenthes/article-home/article-banner/Article-Kultivar_nxes5h.png</string>
     <string name="article_label_desc1">Trivia Singkat</string>
-    <string name="article_label_desc2">Habitat</string>
+    <string name="article_label_desc2">Trivia Lanjutan</string>
     <string name="article_label_iucn">Status IUCN</string>
     <string name="article_label_soil">Media Tanam</string>
     <string name="article_label_env">Optimal Tumbuh</string>
@@ -92,6 +92,7 @@
 
     <!--  Home  -->
     <string name="home_top_bar">GrowNepe</string>
+    <string name="home_banner">https://res.cloudinary.com/ddmaxq4xx/image/upload/v1744086182/Nepenthes/home/HOME-Banner_n1swr7.png</string>
     <string name="home_label1">Rekomendasi Nepenthes Low Land</string>
     <string name="home_label2">Pilihan Media Tanam</string>
     <string name="home_desc_short">Tanaman Nepenthes atau kantung semar adalah genus tanaman yang mengadaptasi karakter unik dengan menghasilkan kantong untuk menangkap serangga sebagai bentuk adaptasi.

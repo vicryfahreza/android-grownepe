@@ -85,7 +85,6 @@ fun HomeNepeContent(
                 text = name,
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
-                color = Color.Black,
                 modifier = modifier
                     .padding(10.dp)
                     .fillMaxWidth()
@@ -102,7 +101,6 @@ fun HomeNepeContent(
                 fontWeight = FontWeight.Normal,
                 fontSize = 18.sp,
                 textAlign = TextAlign.Justify,
-                color = Color.Black,
                 modifier = modifier
                     .padding(10.dp)
                     .weight(1f)

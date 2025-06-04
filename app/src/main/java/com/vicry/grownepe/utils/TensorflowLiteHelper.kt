@@ -59,7 +59,7 @@ object TensorfLowLiteHelper {
         println("PREDIKSI == $s")
 
 
-        if(maxConfidence > 0.5) {
+        if(maxConfidence > 0.8) {
             callback.invoke(classes[maxPos])
         }
 

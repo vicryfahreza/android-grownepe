@@ -15,10 +15,12 @@ cameraX = "1.0.1"
 cameraView = "1.0.0-alpha27"
 coilCompose = "2.4.0"
 composeVersion = "1.5.2"
+youtubePlayerCompose = "2024.07.14"
+androidYoutubePlayer = "11.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -39,6 +41,8 @@ camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", versi
 camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraView" }
 material-icon-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "composeVersion"}
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilCompose"}
+youtube-player-compose = { group = "io.github.ilyapavlovskii", name = "youtubeplayer-compose", version.ref = "youtubePlayerCompose" }
+android-youtube-player = { group = "com.pierfrancescosoffritti.androidyoutubeplayer", name = "core", version.ref = "androidYoutubePlayer"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

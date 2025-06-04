@@ -4,9 +4,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,13 +15,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.vicry.grownepe.model.repo.NepenthesInjection
 import com.vicry.grownepe.ui.factory.ViewModelFactory
 import com.vicry.grownepe.ui.state.UIStatus
@@ -49,8 +54,10 @@ fun DetailLmsScreen (
                         DetailContent(
                             detail.lms.imageBackground,
                             detail.lms.title,
-                            detail.lms.description0,
-                            detail.lms.description1
+                            detail.lms.description1,
+                            detail.lms.description2,
+                            detail.lms.videoSrc,
+                            detail.lms.videoId
                         )
                     }
                     is UIStatus.Error -> {}
@@ -61,15 +68,41 @@ fun DetailLmsScreen (
 }
 
 @Composable
+fun YoutubeScreen(
+    videoId: String,
+    modifier: Modifier
+) {
+    val ctx = LocalContext.current
+    AndroidView(factory = {
+        var view = YouTubePlayerView(it)
+        val fragment = view.addYouTubePlayerListener(
+            object : AbstractYouTubePlayerListener() {
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    super.onReady(youTubePlayer)
+                    youTubePlayer.loadVideo(videoId, 0f)
+                }
+            }
+        )
+        view
+    })
+}
+
+@Composable
 fun DetailContent(
     image: String,
     name: String,
-    description0: String,
     description1: String,
+    description2: String,
+    videoSrc: String,
+    videoId: String,
     modifier: Modifier = Modifier,
 ) {
+
     Box {
-        Column{
+        Column(
+            modifier = Modifier.verticalScroll(
+                rememberScrollState())
+        ){
             AsyncImage(model = image,
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
@@ -84,39 +117,6 @@ fun DetailContent(
                     text = name,
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp,
-                    color = Color.Black,
-                    modifier = modifier
-                        .padding(10.dp)
-                        .fillMaxWidth()
-                        .weight(1f)
-                        .padding(start = 8.dp)
-                )
-            }
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = description0,
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 18.sp,
-                    textAlign = TextAlign.Justify,
-                    color = Color.Black,
-                    modifier = modifier
-                        .padding(10.dp)
-                        .weight(1f)
-                        .padding(start = 8.dp)
-                )
-            }
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Soil Recomendation",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 24.sp,
-                    color = Color.Black,
                     modifier = modifier
                         .padding(10.dp)
                         .fillMaxWidth()
@@ -133,7 +133,41 @@ fun DetailContent(
                     fontWeight = FontWeight.Normal,
                     fontSize = 18.sp,
                     textAlign = TextAlign.Justify,
-                    color = Color.Black,
+                    modifier = modifier
+                        .padding(10.dp)
+                        .weight(1f)
+                        .padding(start = 8.dp)
+                )
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = description2,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 18.sp,
+                    textAlign = TextAlign.Justify,
+                    modifier = modifier
+                        .padding(10.dp)
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .padding(start = 8.dp)
+                )
+            }
+
+            Row(verticalAlignment = Alignment.CenterVertically){
+                YoutubeScreen(videoId = videoId, modifier = Modifier)
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = videoSrc,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 18.sp,
+                    textAlign = TextAlign.Justify,
                     modifier = modifier
                         .padding(10.dp)
                         .fillMaxWidth()
@@ -157,8 +191,10 @@ fun DetailPreview() {
         DetailContent(
             image = "",
             name = "Echeveria",
-            description0 = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
             description1 = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-        )
+            description2 = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+            videoSrc = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+            videoId = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+            )
     }
 }

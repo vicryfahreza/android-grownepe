@@ -6,6 +6,6 @@ data class LMS (
     val imageBackground: String,
     val description1: String,
     val description2: String,
-    val description3: String,
-    val video: String,
+    val videoSrc: String,
+    val videoId: String,
 )
